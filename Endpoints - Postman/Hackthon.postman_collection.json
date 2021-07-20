@@ -1,0 +1,735 @@
+{
+	"info": {
+		"_postman_id": "0c4f0524-bba6-48d1-8ef0-8f39db8225f7",
+		"name": "Hackthon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login - Desktop",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let json = pm.response.json();",
+							"",
+							"pm.environment.set('token', json.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "developer@app.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_desktop}}/login",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register New User - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Teste",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "teste@hackthon.com",
+							"type": "text"
+						},
+						{
+							"key": "cpf",
+							"value": "12345678911",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "teste1234",
+							"type": "text"
+						},
+						{
+							"key": "chapa",
+							"value": "159478",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_desktop}}/users/register",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Adm Edit - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Teste Edit",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "teste@edit.com",
+							"type": "text"
+						},
+						{
+							"key": "cpf",
+							"value": "15926347812",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"description": "optional",
+							"type": "text"
+						},
+						{
+							"key": "chapa_number",
+							"value": "156348",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_desktop}}/users/edit",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"users",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denunciations Status Update - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_desktop}}/denunciations/details/update/status/1000/1",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"denunciations",
+						"details",
+						"update",
+						"status",
+						"1000",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Adm Situation - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_desktop}}/users/situation?user_id=2&active=1",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"users",
+						"situation"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "2"
+						},
+						{
+							"key": "active",
+							"value": "1"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denunciations List - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_desktop}}/denunciations/list",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"denunciations",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users Adm List - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_desktop}}/users/list",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"users",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denunciations Details - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_desktop}}/denunciations/details/1000",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"denunciations",
+						"details",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denunciations Status List - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_desktop}}/denunciations/details/list/status/1000",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"denunciations",
+						"details",
+						"list",
+						"status",
+						"1000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Export Files - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_desktop}}/export/file/1008",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"export",
+						"file",
+						"1008"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dashboard - Desktop",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_desktop}}/dashboard/home",
+					"host": [
+						"{{url_base_desktop}}"
+					],
+					"path": [
+						"dashboard",
+						"home"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valid Login - Mobile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cpf",
+							"value": "12345678912",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_mobile}}/login/valid?cpf=12345678911",
+					"host": [
+						"{{url_base_mobile}}"
+					],
+					"path": [
+						"login",
+						"valid"
+					],
+					"query": [
+						{
+							"key": "cpf",
+							"value": "12345678911"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denuncations List - Mobile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_mobile}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_mobile}}/denunciations/list",
+					"host": [
+						"{{url_base_mobile}}"
+					],
+					"path": [
+						"denunciations",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Neighborhoods List - Mobile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_mobile}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url_base_mobile}}/denunciations/list/neighborhoods?city_id=3516200",
+					"host": [
+						"{{url_base_mobile}}"
+					],
+					"path": [
+						"denunciations",
+						"list",
+						"neighborhoods"
+					],
+					"query": [
+						{
+							"key": "city_id",
+							"value": "3516200"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Access Login - Mobile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let json = pm.response.json();",
+							"",
+							"pm.environment.set('token_mobile', json.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cpf",
+							"value": "12345678911",
+							"type": "text"
+						},
+						{
+							"key": "mother_name",
+							"value": "marques gomes",
+							"type": "text"
+						},
+						{
+							"key": "birthdate",
+							"value": "28/07/1999",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_mobile}}/login/access",
+					"host": [
+						"{{url_base_mobile}}"
+					],
+					"path": [
+						"login",
+						"access"
+					],
+					"query": [
+						{
+							"key": "cpf",
+							"value": "12345678911",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User - Mobile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Teste Register",
+							"type": "text"
+						},
+						{
+							"key": "cpf",
+							"value": "12345678918",
+							"type": "text"
+						},
+						{
+							"key": "mother_name",
+							"value": "Teste do Nome aqui",
+							"type": "text"
+						},
+						{
+							"key": "birthdate",
+							"value": "2000-07-04",
+							"type": "text"
+						},
+						{
+							"key": "neighborhood_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "address_content",
+							"value": "{\"street\": \"Rua João Carlos\", \"zipcode\": \"14406000\", \"number_house\": \"145\", \"reference_point\": \"Ao lado do atacadão\"}",
+							"description": "String",
+							"type": "text"
+						},
+						{
+							"key": "phone[]",
+							"value": "{\"number\" :  \"16995632854\", \"order\": 1}",
+							"description": "String",
+							"type": "text"
+						},
+						{
+							"key": "phone[]",
+							"value": "{\"number\" :  \"169941851854\", \"order\": 1}",
+							"description": "String",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_mobile}}/register",
+					"host": [
+						"{{url_base_mobile}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Denunciation Register - Mobile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token_mobile}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "denunciations_type_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "neighborhood_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "address_content",
+							"value": "{\"street\": \"Rua João Carlos\", \"zipcode\": \"14406000\", \"number_house\": \"145\", \"reference_point\": \"Ao lado do atacadão\"}",
+							"description": "String",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Isso é uma denuncia teste",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "16994897625",
+							"type": "text"
+						},
+						{
+							"key": "files[]",
+							"type": "file",
+							"src": [
+								"/home/hades/Desktop/teste1.jpeg",
+								"/home/hades/Desktop/teste2.jpg"
+							]
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url_base_mobile}}/denunciations/register",
+					"host": [
+						"{{url_base_mobile}}"
+					],
+					"path": [
+						"denunciations",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
